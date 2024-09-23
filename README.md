@@ -6,7 +6,17 @@ Este proyecto incluye varios microservicios documentados con Swagger, y se puede
 
 La estructura del proyecto es la siguiente:
 
-. ├── docker-compose.yml ├── Microservicio-Cliente/ │ └── api-cliente.yaml ├── Microservicio-Movimientos/ │ └── api-movimientos.yaml ├── Microservicio-Orquestador/ │ └── api-orquestador.yaml └── Microservicio-Promociones/ └── api-promociones.yaml
+```
+docker-compose.yml 
+├── Microservicio-Cliente
+│   ├── api-cliente.yaml
+├── Microservicio-Movimientos
+│   ├── api-movimientos.yaml
+├── Microservicio-Orquestador
+│   ├── api-orquestador.yaml
+└── Microservicio-Promociones
+    ├── api-promociones.yaml
+```
 
 
 Cada uno de estos microservicios expone su API en Swagger UI.
