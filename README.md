@@ -32,10 +32,30 @@ Verifica que Docker esté correctamente instalado ejecutando:
 
 ```bash
 docker --version
-docker-compose --version
 ```
 
 ## Instrucciones de Uso
+
+0. Instalar Docker Compose
+
+Hay que tener claro que es distinto `docker-compose` que `docker compose`. Quizas les da errores con el primero (de permisos con sudo). Encontré que está deprecado por lo que instalen el segundo
+
+```bash
+sudo apt-get update
+sudo apt-get install docker-compose-plugin
+```
+
+Cualquier cosa si da errores de permisos colocan lo siguiente:
+
+```bash
+sudo usermod -aG docker $USER
+```
+
+Luego, cierra sesión y vuelve a iniciar sesión para aplicar los cambios.
+
+```bash
+newgrp docker
+```
 
 1. Ejecutar Docker Compose
 
@@ -68,6 +88,8 @@ docker ps -a
 
 Esto te mostrará una lista de todos los contenedores en ejecución.
 
+Si no les aparece, pero no tuvieron errores antes, lo hacen con sudo y quizás les aparece.
+
 4. Detener los Contenedores
 
 Para detener todos los contenedores, ejecuta:
@@ -79,18 +101,4 @@ docker compose down
 ```
 
 Este comando detendrá y eliminará todos los contenedores creados por Docker Compose.
-
-## Solución de Problemas
-
-### Permisos de Usuario
-
-Si tienes problemas para acceder a Docker sin sudo, asegúrate de que tu usuario esté en el grupo docker:
-
-```bash
-
-sudo usermod -aG docker $USER
-
-```
-
-Luego, cierra sesión y vuelve a iniciar sesión para aplicar los cambios.
 
