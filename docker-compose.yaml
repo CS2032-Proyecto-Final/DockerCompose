@@ -1,0 +1,42 @@
+version: '3.8'
+
+services:
+  swagger-cliente:
+    image: swaggerapi/swagger-ui
+    container_name: swagger-cliente
+    ports:
+      - "8081:8080"  # Expose port 8081 for Microservicio-Cliente
+    environment:
+      SWAGGER_JSON: /app/api-cliente.yaml
+    volumes:
+      - ./Microservicio-Cliente:/app
+
+  swagger-movimientos:
+    image: swaggerapi/swagger-ui
+    container_name: swagger-movimientos
+    ports:
+      - "8082:8080"  # Expose port 8082 for Microservicio-Movimientos
+    environment:
+      SWAGGER_JSON: /app/api-movimientos.yaml
+    volumes:
+      - ./Microservicio-Movimientos:/app
+
+  swagger-orquestador:
+    image: swaggerapi/swagger-ui
+    container_name: swagger-orquestador
+    ports:
+      - "8083:8080"  # Expose port 8083 for Microservicio-Orquestador
+    environment:
+      SWAGGER_JSON: /app/api-orquestador.yaml
+    volumes:
+      - ./Microservicio-Orquestador:/app
+
+  swagger-promociones:
+    image: swaggerapi/swagger-ui
+    container_name: swagger-promociones
+    ports:
+      - "8084:8080"  # Expose port 8084 for Microservicio-Promociones
+    environment:
+      SWAGGER_JSON: /app/api-promociones.yaml
+    volumes:
+      - ./Microservicio-Promociones:/app
