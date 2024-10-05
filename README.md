@@ -7,7 +7,7 @@ Este proyecto incluye varios microservicios documentados con Swagger, y se puede
 La estructura del proyecto es la siguiente:
 
 ```
-docker-compose.yml 
+docker-compose.yml
 ├── Microservicio-Cliente
 │   ├── api-cliente.yaml
 ├── Microservicio-Movimientos
@@ -57,7 +57,27 @@ Luego, cierra sesión y vuelve a iniciar sesión para aplicar los cambios.
 newgrp docker
 ```
 
-1. Ejecutar Docker Compose
+1. Ejecutar Script de Actualización
+
+Primero, se debe ejecutar el script update.sh, que clonará los repositorios de Git de cada microservicio, y luego constuirá las imágenes usando Docker Compose.
+
+Antes de ejecutarlo, hay que darle permisos de ejecución al script:
+
+```bash
+
+chmod +x update.sh
+
+```
+
+Y luego lo ejecutamos:
+
+```bash
+
+./update.sh
+
+```
+
+2. Ejecutar Docker Compose
 
 Para iniciar todos los microservicios simultáneamente, utiliza Docker Compose:
 
@@ -69,7 +89,10 @@ docker compose up -d
 
 Este comando hará que los contenedores se ejecuten en segundo plano. Cada microservicio estará accesible desde su propio puerto.
 
-2. Acceder a los Microservicios
+
+Este comando hará que los contenedores se ejecuten en segundo plano. Cada microservicio estará accesible desde su propio puerto.
+
+3. Acceder a los Microservicios
 
 Una vez que los contenedores estén corriendo, puedes acceder a cada uno de los microservicios mediante Swagger UI en las siguientes URLs:
 
@@ -78,19 +101,21 @@ Una vez que los contenedores estén corriendo, puedes acceder a cada uno de los 
     Microservicio Orquestador: http://localhost:8083
     Microservicio Promociones: http://localhost:8084
 
-3. Verificar el estado de los contenedores
+4. Verificar el estado de los contenedores
 
 Para verificar que los contenedores estén corriendo correctamente, utiliza:
 
-bash
+```bash
 
 docker ps -a
+
+```
 
 Esto te mostrará una lista de todos los contenedores en ejecución.
 
 Si no les aparece, pero no tuvieron errores antes, lo hacen con sudo y quizás les aparece.
 
-4. Detener los Contenedores
+5. Detener los Contenedores
 
 Para detener todos los contenedores, ejecuta:
 
@@ -102,3 +127,22 @@ docker compose down
 
 Este comando detendrá y eliminará todos los contenedores creados por Docker Compose.
 
+6. Eliminar los directorios con los microservicios
+
+En caso se quieran eliminar los directorios en los que se clonaron los microservicios (por ejemplo antes de pushear probablemente se quiera hacer esto para no pushear todos los microservicios al repositorio), se tiene que ejecutar el script delete.sh.
+
+Para esto, primero le damos permiso de ejecución:
+
+```bash
+
+chmod +x delete.sh
+
+```
+
+Luego lo ejecutamos:
+
+```bash
+
+./delete.sh
+
+```
