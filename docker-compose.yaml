@@ -44,7 +44,7 @@ services:
 
   microservicio-orquestador:
     build: ./Microservicio-Orquestador
-    container_name: mo_o
+    container_name: mo_c
     ports:
       - "${MO_PORT}:8001"
     networks:
@@ -52,7 +52,7 @@ services:
 
   microservicio-cliente:
     build: ./Microservicio-Cliente/MicroservicioCliente
-    container_name: mc_o
+    container_name: mc_c
     ports:
       - "${MC_PORT}:8080"
     networks:
@@ -60,7 +60,7 @@ services:
 
   microservicio-movimientos:
     build: ./Microservicio-Movimientos
-    container_name: mm_o
+    container_name: mm_c
     ports:
       - "${MM_PORT}:8000"
     environment:
@@ -74,7 +74,7 @@ services:
 
   microservicio-promociones:
     build: ./Microservicio-Promociones
-    container_name: mp_o
+    container_name: mp_c
     ports:
       - "${MP_PORT}:8002"
     networks:
