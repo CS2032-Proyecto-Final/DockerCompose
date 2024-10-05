@@ -40,3 +40,45 @@ services:
       SWAGGER_JSON: /app/api-promociones.yaml
     volumes:
       - ./Microservicio-Promociones:/app
+
+
+  microservicio-orquestador:
+    build: ./Microservicio-Orquestador
+    container_name: mo_o
+    ports:
+      - "${MO_PORT}:8001"
+    networks:
+      - microservicios
+
+  microservicio-cliente:
+    build: ./Microservicio-Cliente/MicroservicioCliente
+    container_name: mc_o
+    ports:
+      - "${MC_PORT}:8080"
+    networks:
+      - microservicios
+
+  microservicio-movimientos:
+    build: ./Microservicio-Movimientos
+    container_name: mm_o
+    ports:
+      - "${MM_PORT}:8000"
+    environment:
+      DB_USER: ${MM_DB_USER}
+      DB_PASSWORD: ${MM_DB_PASSWORD}
+      DB_HOST: ${MM_DB_HOST}
+      DB_PORT: ${MM_DB_PORT}
+      DB_NAME: ${MM_DB_NAME}
+    networks:
+      - microservicios
+
+  microservicio-promociones:
+    build: ./Microservicio-Promociones
+    container_name: mp_o
+    ports:
+      - "${MP_PORT}:8002"
+    networks:
+      - microservicios
+
+networks:
+  microservicios:
