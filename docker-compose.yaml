@@ -46,7 +46,9 @@ services:
     ports:
       - "${MO_PORT}:8001"
     networks:
-      - microservicios
+      microservicios:
+        aliases:
+          - mo-c
 
   microservicio-cliente:
     build: ./Microservicio-Cliente/MicroservicioCliente
@@ -54,7 +56,9 @@ services:
     ports:
       - "${MC_PORT}:8080"
     networks:
-      - microservicios
+      microservicios:
+        aliases:
+          - mc-c
 
   microservicio-movimientos:
     build: ./Microservicio-Movimientos
@@ -68,7 +72,9 @@ services:
       DB_PORT: ${MM_DB_PORT}
       DB_NAME: ${MM_DB_NAME}
     networks:
-      - microservicios
+      microservicios:
+        aliases:
+          - mm-c
 
   microservicio-promociones:
     build: ./Microservicio-Promociones
@@ -76,7 +82,9 @@ services:
     ports:
       - "${MP_PORT}:8002"
     networks:
-      - microservicios
+      microservicios:
+        aliases:
+          - mp-c
 
 networks:
   microservicios:
